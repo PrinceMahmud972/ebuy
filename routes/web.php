@@ -22,5 +22,10 @@ Route::get('/login', function () {
     return view('login');
 });
 
-
 Route::post('/login', [UserController::class, 'login']);
+
+Route::get('/logout', [UserController::class, 'logout']);
+
+Route::get('/product/{id}', [ProductController::class, 'show']);
+
+Route::post('/cart', [ProductController::class, 'addToCart']);

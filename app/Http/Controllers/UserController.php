@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Session;
 
 class UserController extends Controller
 {
@@ -18,5 +19,11 @@ class UserController extends Controller
             $request->session()->put('user', $user);
             return redirect('/');
         }
+    }
+
+    function logout()
+    {
+        Session::forget('user');
+        return redirect('/');
     }
 }
