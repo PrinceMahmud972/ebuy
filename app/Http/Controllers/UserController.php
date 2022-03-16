@@ -9,7 +9,24 @@ use Illuminate\Support\Facades\Session;
 
 class UserController extends Controller
 {
-    function login(Request $request)
+
+    public function register()
+    {
+        return view('register');
+    }
+
+    public function save(Request $request)
+    {
+
+        $user = new User;
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->password = Hash::make($request->password);
+        $user->save();
+        return redirect('/login');
+    }
+
+    public function login(Request $request)
     {
         $user = User::where(['email' => $request->email])->first();
 

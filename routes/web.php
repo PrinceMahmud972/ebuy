@@ -18,6 +18,10 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [ProductController::class, 'index']);
 
+Route::get('/register', [UserController::class, 'register']);
+Route::post('/register', [UserController::class, 'save']);
+
+
 Route::get('/login', function () {
     return view('login');
 });
@@ -29,3 +33,12 @@ Route::get('/logout', [UserController::class, 'logout']);
 Route::get('/product/{id}', [ProductController::class, 'show']);
 
 Route::post('/cart', [ProductController::class, 'addToCart']);
+
+Route::get('/cart-list', [ProductController::class, 'cartList']);
+Route::get('/remove-cart/{id}', [ProductController::class, 'cartId']);
+
+Route::get('/order', [ProductController::class, 'order']);
+
+Route::post('/order-place', [ProductController::class, 'orderPlace']);
+
+Route::get('/my-orders', [ProductController::class, 'myOrders']);
